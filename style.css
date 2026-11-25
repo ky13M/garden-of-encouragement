@@ -1,0 +1,682 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+     min-height: 100vh;
+
+    background: radial-gradient(
+        circle at center,
+        #294a32 0%,
+        #1b3525 45%,
+        #101d16 100%
+    );
+
+    color: #fff8e7;
+    font-family: Georgia, serif;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.welcome-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: #f4c542;
+    filter: blur(130px);
+    opacity: 0.18;
+    z-index: -1;
+}
+
+.flower-bouquet {
+    position: relative;
+    width: 260px;
+    height: 190px;
+    margin-bottom: 15px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.rose {
+    position: absolute;
+    font-size: 65px;
+    filter: drop-shadow(0 0 15px #ffd54f);
+    animation: bloom 2s ease backwards;
+}
+
+.rose-one {
+    top: 0;
+    left: 95px;
+}
+
+.rose-two {
+    top: 40px;
+    left: 20px;
+    font-size: 55px;
+}
+
+.rose-three {
+    top: 40px;
+    right: 20px;
+    font-size: 55px;
+}
+
+.rose-four {
+    top: 100px;
+    left: 65px;
+    font-size: 50px;
+}
+
+.rose-five {
+    top: 100px;
+    right: 65px;
+    font-size: 50px;
+}
+
+.small-heading {
+    color: #f4d77d;
+    letter-spacing: 5px;
+    font-size: 11px;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size: clamp(38px, 7vw, 65px);
+    font-weight: normal;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+h1 span {
+    color: #ffd966;
+    font-style: italic;
+}
+
+.welcome-message {
+    max-width: 350px;
+    color: #e8e8c9;
+    line-height: 1.8;
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 15px 30px;
+    border: 1px solid #e8c65a;
+    border-radius: 30px;
+    background: rgba(244,197,66,0.10);
+    color: #fff8e7;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #b58b2b;
+    box-shadow: 0 0 25px #f4c542;
+    transform: translateY(-4px);
+}
+
+.footer-message {
+    margin-top: 45px;
+    font-size: 12px;
+    color: #d7c68b;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ffb4d0;
+    animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes bloom {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes twinkle {
+    0%, 100% {
+        opacity: 0.2;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+/* ENVELOPE SECTION */
+
+.envelope-scene {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.envelope {
+    position: relative;
+    width: 280px;
+    height: 190px;
+    background: #294a32;
+    margin: 60px 0 35px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 25px #d6a928);
+    transition: transform 0.4s ease;
+}
+
+.envelope:hover {
+    transform: translateY(-8px);
+}
+
+.envelope-back {
+    position: absolute;
+    inset: 0;
+    background: #1b3525;
+}
+
+.envelope-letter {
+    position: absolute;
+    width: 90%;
+    height: 85%;
+    left: 5%;
+    top: 5%;
+    background: #f9e5e9;
+    color: #67243d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    transition: transform 1s ease;
+    z-index: 2;
+}
+
+.envelope-letter p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.envelope-front {
+    position: absolute;
+    inset: 0;
+    background: #426b3c;
+    clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+    z-index: 3;
+}
+
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #557b43;
+    clip-path: polygon(0 0, 100% 0, 50% 60%);
+    transform-origin: top;
+    transition: transform 0.8s ease;
+    z-index: 4;
+}
+
+.wax-seal {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #f4c542;
+    color: #79502e;
+    display: grid;
+    place-items: center;
+    z-index: 5;
+    font-size: 22px;
+    transition: opacity 0.3s ease;
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
+
+.envelope.open .wax-seal {
+    opacity: 0;
+}
+
+.envelope.open .envelope-letter {
+    transform: translateY(-165px);
+    z-index: 6;
+}
+
+.letter-reveal {
+    display: none;
+    max-width: 380px;
+    padding: 30px;
+    background: #f8ebcb;
+    color: #493b25;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 1.9;
+    box-shadow: 0 0 30px rgba(255, 100, 160, 0.3);
+}
+
+.letter-reveal.visible {
+    display: block;
+    animation: bloom 1s ease;
+}
+
+.letter-reveal h2 {
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.envelope-hint {
+    color: #f5b1ca;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+.garden-flowers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 600px;
+    margin: 35px auto;
+}
+
+.garden-flower {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 213, 79, 0.5);
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    font-size: 45px;
+    padding: 0;
+    transition: 0.3s ease;
+}
+
+.garden-flower:hover {
+    transform: scale(1.2) rotate(10deg);
+    background: rgba(255, 213, 79, 0.15);
+    box-shadow: 0 0 25px #ffd54f;
+}
+.flower-message h2 {
+    color: #ffd54f;
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.flower-message p {
+    color: #f5dce5;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+
+#flowerVerse {
+    color: #ffd98a;
+    font-style: italic;
+    font-size: 13px;
+}
+.flower-message {
+    display: none;
+    max-width: 450px;
+    width: 90%;
+    margin: 25px auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 213, 79, 0.4);
+    border-radius: 18px;
+    animation: bloom 0.8s ease;
+}
+
+.flower-message.visible {
+    display: block;
+}
+.mood-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.mood-button {
+    width: 145px;
+    min-height: 100px;
+    padding: 15px;
+    border: 1px solid rgba(255, 213, 79, 0.5);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
+    font-size: 15px;
+    line-height: 2;
+    transition: 0.3s ease;
+}
+
+.mood-button:hover {
+    background: rgba(255, 213, 79, 0.15);
+    box-shadow: 0 0 20px #ffd54f;
+    transform: translateY(-5px);
+}
+
+.mood-message {
+    display: none;
+    max-width: 450px;
+    width: 90%;
+    margin: 25px auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 213, 79, 0.4);
+    border-radius: 18px;
+}
+
+.mood-message.visible {
+    display: block;
+}
+
+.mood-message h2 {
+    color: #ffd54f;
+    margin-bottom: 15px;
+}
+
+.mood-message p {
+    color: #f5dce5;
+    line-height: 1.8;
+    margin-bottom: 12px;
+}
+.final-sunflower {
+    font-size: 100px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 25px #ffd54f);
+    animation: float 4s ease-in-out infinite;
+}
+
+.final-letter {
+    max-width: 480px;
+    width: 90%;
+    padding: 30px;
+    margin: 20px auto;
+    background: #f9e5e9;
+    color: #67243d;
+    border-radius: 8px;
+    line-height: 1.9;
+    box-shadow: 0 0 30px rgba(255, 100, 160, 0.3);
+}
+
+.final-letter h2 {
+    font-weight: normal;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.final-letter p {
+    font-size: 14px;
+}
+
+.last-message {
+    display: none;
+    max-width: 450px;
+    width: 90%;
+    margin: 25px auto;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 213, 79, 0.5);
+    border-radius: 18px;
+    line-height: 1.8;
+}
+
+.last-message.visible {
+    display: block;
+    animation: bloom 1s ease;
+}
+
+.last-message h2 {
+    color: #ffd54f;
+    margin-bottom: 15px;
+}
+/* GOLDEN GARDEN PARTICLES 🌻 */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: #ffd966;
+    border-radius: 50%;
+    box-shadow: 0 0 12px #f4c542;
+    opacity: 0;
+    animation: goldenFloat 7s linear infinite;
+}
+
+@keyframes goldenFloat {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.8;
+    }
+
+    80% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0;
+    }
+}
+
+/* Keep the garden content above the particles */
+
+#welcomeScreen {
+    position: relative;
+    z-index: 1;
+}
+/* SUNFLOWER EMOJI GARDEN 🌻 */
+
+.garden-flowers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 600px;
+    margin: 35px auto;
+}
+
+.garden-flower {
+    width: 90px;
+    height: 90px;
+    font-size: 45px;
+    padding: 0;
+    border: 1px solid rgba(244, 197, 66, 0.55);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+    transition: 0.3s ease;
+}
+
+.garden-flower:hover {
+    transform: scale(1.2) rotate(10deg);
+    background: rgba(244, 197, 66, 0.15);
+    box-shadow: 0 0 25px #ffd966;
+}
+/* FLOWER ENTRANCE ANIMATION 🌻 */
+
+.garden-flower {
+    opacity: 0;
+    animation: flowerAppear 1s ease forwards;
+}
+
+.garden-flower:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.garden-flower:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.garden-flower:nth-child(3) {
+    animation-delay: 0.8s;
+}
+
+.garden-flower:nth-child(4) {
+    animation-delay: 1.1s;
+}
+
+.garden-flower:nth-child(5) {
+    animation-delay: 1.4s;
+}
+
+@keyframes flowerAppear {
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* GENTLE SUNFLOWER FLOAT 🌻 */
+
+.garden-flower span {
+    display: inline-block;
+    animation: sunflowerFloat 4s ease-in-out infinite;
+}
+
+@keyframes sunflowerFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+/* SMOOTH SCREEN TRANSITIONS */
+
+#welcomeScreen {
+    transition: opacity 0.6s ease;
+}
+/* MOBILE RESPONSIVENESS 📱 */
+
+@media screen and (max-width: 600px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
+    #welcomeScreen {
+        width: 100%;
+        min-height: 100vh;
+        padding: 30px 18px;
+    }
+
+    h1 {
+        font-size: clamp(30px, 9vw, 42px);
+    }
+
+    .welcome-message,
+    .footer-message {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    /* SUNFLOWER GARDEN */
+
+    .garden-flowers {
+        gap: 12px;
+        max-width: 350px;
+        margin: 25px auto;
+    }
+
+    .garden-flower {
+        width: 72px;
+        height: 72px;
+        font-size: 38px;
+    }
+
+    /* BUTTONS */
+
+    button {
+        max-width: 100%;
+        font-size: 15px;
+        padding: 12px 18px;
+    }
+
+    /* MESSAGE PANELS */
+
+    .flower-message,
+    .mood-message {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 16px;
+        box-sizing: border-box;
+    }
+
+    /* LETTER AND ENVELOPE */
+
+    .envelope {
+        max-width: 280px;
+        width: 85%;
+    }
+
+}
